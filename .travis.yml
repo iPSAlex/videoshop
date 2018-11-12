@@ -8,3 +8,10 @@ sudo: false
 cache:
   directories:
     - $HOME/.m2
+
+# override the Travis default (mvn install) with a no-op
+install: true
+
+script:
+  - mvn verify -Pci -Dspring.main.banner-mode=OFF -B -V
+  - mvn verify -Pjqa -B -V
